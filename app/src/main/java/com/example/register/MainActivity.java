@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         String userName = getSharedPreferences("test",MODE_PRIVATE)
                 .getString("NAME","");
         EditText name = findViewById(R.id.name);
-        name.setText(userName);
+        name.setText(userName);//
     }
     public void Register (View view){
         Intent intent  = new Intent(MainActivity.this,NameActivity.class);
