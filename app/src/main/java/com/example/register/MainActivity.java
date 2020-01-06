@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        String userName = getSharedPreferences("test",MODE_PRIVATE)
+                .getString("NAME","");
+        EditText name = findViewById(R.id.name);
+        name.setText(userName);
     }
     public void Register (View view){
         Intent intent  = new Intent(MainActivity.this,NameActivity.class);

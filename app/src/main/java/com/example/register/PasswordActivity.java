@@ -13,17 +13,17 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
-public class AccountActivity extends AppCompatActivity {
+public class PasswordActivity extends AppCompatActivity {
 
-    private EditText edAccount;
+    private EditText edPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account);
+        setContentView(R.layout.activity_password);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        edAccount = findViewById(R.id.user_account);
+        edPassword = findViewById(R.id.user_password);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -34,13 +34,14 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
     }
-    public void commita(View view){
-        Intent intent = new Intent(AccountActivity.this,PasswordActivity.class);
-        String  useraccount =  edAccount.getText().toString();
+    public  void  commitb(View view){
+        Intent intent = new Intent(PasswordActivity.this,MainActivity.class);
+        String userpassword = edPassword.getText().toString();
         SharedPreferences pref = getSharedPreferences("test",MODE_PRIVATE);
         pref.edit()
-                .putString("ACCOUNT",useraccount)
+                .putString("PASSWORD",userpassword)
                 .commit();
         startActivity(intent);
     }
+
 }
