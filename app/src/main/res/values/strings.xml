@@ -4,4 +4,11 @@
     <string name="title_activity_name">NameActivity</string>
     <string name="title_activity_account">AccountActivity</string>
     <string name="title_activity_password">PasswordActivity</string>
+    <string name="password">Password</string>
+    <string name="name">name</string>
+    <string name="commit">commit</string>
+    <string name="account">account</string>
+    <string name="commit">commit</string>
+    <string name="name1">Name</string>
+    <string name="sign_up">Sign Up</string>
 </resources>

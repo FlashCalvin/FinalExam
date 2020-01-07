@@ -7,9 +7,11 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -34,14 +36,23 @@ public class PasswordActivity extends AppCompatActivity {
             }
         });
     }
-    public  void  commitb(View view){
-        Intent intent = new Intent(PasswordActivity.this,MainActivity.class);
-        String userpassword = edPassword.getText().toString();
-        SharedPreferences pref = getSharedPreferences("test",MODE_PRIVATE);
-        pref.edit()
-                .putString("PASSWORD",userpassword)
-                .commit();
-        startActivity(intent);
+    public  void  commitb(View view) {
+        String stringPassword = edPassword.getText().toString();
+        if (!TextUtils.isEmpty(stringPassword)) {
+            new AlertDialog.Builder(this)
+                    .setTitle("ERROR")
+                    .setMessage("Must enter something")
+                    .setPositiveButton("OK",null)
+                    .show();
+        } else {
+            Intent intent = new Intent(PasswordActivity.this, MainActivity.class);
+            String userpassword = edPassword.getText().toString();
+            SharedPreferences pref = getSharedPreferences("test", MODE_PRIVATE);
+            pref.edit()
+                    .putString("PASSWORD", userpassword)
+                    .commit();
+            startActivity(intent);
+        }
     }
 
 }

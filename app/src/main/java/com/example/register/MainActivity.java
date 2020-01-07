@@ -12,12 +12,16 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final boolean isNext = false;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -32,10 +36,34 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        Switch sw = findViewById(R.id.change);
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                TextView txt = findViewById(R.id.regist);
+                if(!isChecked){
+                    txt.setText("Login");
+                }else
+                    txt.setText("Regist");
+
+            }
+        });
+        //
         String userName = getSharedPreferences("test",MODE_PRIVATE)
                 .getString("NAME","");
         EditText name = findViewById(R.id.name);
-        name.setText(userName);//
+        name.setText(userName);
+        //
+        String userAccount = getSharedPreferences("test",MODE_PRIVATE)
+                .getString("ACCOUNT","");
+        EditText account = findViewById(R.id.user_account);
+        account.setText(userAccount);
+        //
+        String userPassword = getSharedPreferences("test",MODE_PRIVATE)
+                .getString("PASSWORD","");
+        EditText password = findViewById(R.id.user_password);
+        password.setText(userPassword);
+
     }
     public void Register (View view){
         Intent intent  = new Intent(MainActivity.this,NameActivity.class);
